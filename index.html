@@ -130,11 +130,34 @@ line-height:1.5;
 margin-top:12px;
 }
 
+.busca-box{
+background:#f0f5ff;
+border:1px solid #cbdcff;
+padding:15px;
+border-radius:14px;
+margin-top:12px;
+}
+
+.link-gerado{
+background:#e8f9ef;
+border:1px solid #a8e6bd;
+padding:13px;
+border-radius:12px;
+margin-top:12px;
+overflow-wrap:anywhere;
+line-height:1.5;
+display:none;
+}
+
 footer{
 text-align:center;
 padding:20px;
 color:#718096;
 font-size:13px;
+}
+
+@media(max-width:480px){
+.stats{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -176,6 +199,83 @@ Encontre vagas, prepare anúncios e organize suas divulgações em um só lugar.
 </div>
 </section>
 
+<!-- BUSCA ASSISTIDA -->
+
+<section class="card">
+
+<h2>🔎 BUSCA AUTOMÁTICA DE VAGAS</h2>
+
+<p class="intro">
+Pesquise oportunidades pelo cargo e localização. O GE VAGAS abrirá a pesquisa oficial do Grupo RH para você selecionar uma vaga real.
+</p>
+
+<div class="busca-box">
+
+<label for="cargoBusca">Cargo desejado</label>
+<input
+id="cargoBusca"
+placeholder="Ex: Auxiliar de Produção"
+>
+
+<label for="cidadeBusca">Cidade ou região</label>
+<input
+id="cidadeBusca"
+placeholder="Ex: São Paulo - SP"
+>
+
+<button type="button" onclick="abrirBuscaAutomatica()">
+🔍 PESQUISAR VAGAS
+</button>
+
+<div id="avisoBusca" class="aviso"></div>
+
+</div>
+
+<div class="destaque">
+<strong>📌 Como funciona:</strong>
+<p>1. Digite o cargo desejado.</p>
+<p>2. Informe a cidade, se desejar.</p>
+<p>3. Abra os resultados oficiais do Grupo RH.</p>
+<p>4. Escolha uma vaga e copie o endereço completo dela.</p>
+<p>5. Cole o endereço abaixo para gerar seu link de afiliado.</p>
+</div>
+
+<label for="urlVaga">🔗 Endereço da vaga escolhida</label>
+
+<input
+id="urlVaga"
+type="url"
+placeholder="Cole aqui a URL completa da vaga"
+>
+
+<button type="button" class="verde" onclick="gerarLinkAutomatico()">
+⚡ GERAR MEU LINK DE AFILIADO
+</button>
+
+<div id="linkGerado" class="link-gerado"></div>
+
+<button
+id="copiarLink"
+type="button"
+style="display:none"
+onclick="copiarLinkAfiliado()"
+>
+📋 COPIAR LINK DE AFILIADO
+</button>
+
+<button
+id="usarVaga"
+type="button"
+style="display:none"
+onclick="usarVagaNaDivulgacao()"
+>
+📢 USAR ESTA VAGA NA DIVULGAÇÃO
+</button>
+
+</section>
+
+<!-- BUSCA ORIGINAL -->
+
 <section class="card">
 
 <h2>🔎 BUSCAR VAGAS NO GRUPO RH</h2>
@@ -208,8 +308,7 @@ rel="noopener noreferrer"
 <p>1. Abra a lista oficial de vagas.</p>
 <p>2. Escolha a oportunidade desejada.</p>
 <p>3. Clique na vaga para abrir os detalhes.</p>
-<p>4. Acesse seu portal de afiliado e gere o link correspondente, se disponível.</p>
-<p>5. Volte à GE VAGAS e cole seu link no campo abaixo.</p>
+<p>4. Gere seu link usando a nova ferramenta acima.</p>
 </div>
 
 <a
@@ -223,12 +322,14 @@ rel="noopener noreferrer"
 
 </section>
 
+<!-- CRIAR DIVULGAÇÃO -->
+
 <section class="card">
 
 <h2>📢 CRIAR DIVULGAÇÃO</h2>
 
 <p class="intro">
-Depois de copiar seu link de afiliado, preencha os dados para criar seu anúncio.
+Depois de selecionar sua oportunidade, preencha os dados para criar seu anúncio.
 </p>
 
 <label for="cargo">Cargo</label>
@@ -292,8 +393,13 @@ GE VAGAS • Encontre • Divulgue • Ganhe
 
 <script>
 
+const ID_AFILIADO = "966848";
+
 let textoAtual="";
 let linkAtual="";
+let urlOriginalVaga="";
+let cargoSelecionado="";
+let localSelecionado="";
 
 let totalAnuncios=Number(
 localStorage.getItem("geVagasAnuncios") || 0
@@ -301,15 +407,145 @@ localStorage.getItem("geVagasAnuncios") || 0
 
 document.getElementById("anuncios").textContent=totalAnuncios;
 
-function abrirBusca(){
+// ABRIR BUSCA OFICIAL
 
-const termo=document.getElementById("busca").value.trim();
+function abrirBuscaAutomatica(){
 
-const url="https://gruporhconsultoria.com/vagas/";
+const cargo=document.getElementById("cargoBusca").value.trim();
+const cidade=document.getElementById("cidadeBusca").value.trim();
+const aviso=document.getElementById("avisoBusca");
 
-window.open(url,"_blank");
+if(!cargo){
+
+aviso.style.display="block";
+aviso.textContent="⚠️ Digite o cargo que deseja pesquisar.";
+return;
 
 }
+
+const url=new URL("https://gruporhconsultoria.com/vagas/");
+
+// Parâmetros de pesquisa do portal
+url.searchParams.set("search_keywords",cargo);
+
+if(cidade){
+url.searchParams.set("search_location",cidade);
+}
+
+cargoSelecionado=cargo;
+localSelecionado=cidade;
+
+window.open(url.toString(),"_blank");
+
+aviso.style.display="block";
+aviso.textContent="✅ Pesquisa oficial aberta. Escolha uma oportunidade e copie o endereço completo da vaga.";
+
+}
+
+// GERAR LINK DE AFILIADO
+
+function gerarLinkAutomatico(){
+
+const campo=document.getElementById("urlVaga");
+const aviso=document.getElementById("linkGerado");
+
+const endereco=campo.value.trim();
+
+if(!endereco){
+
+aviso.style.display="block";
+aviso.textContent="⚠️ Cole o endereço completo da vaga.";
+return;
+
+}
+
+let url;
+
+try{
+
+url=new URL(endereco);
+
+if(!["http:","https:"].includes(url.protocol)){
+throw new Error();
+}
+
+}catch(e){
+
+aviso.style.display="block";
+aviso.textContent="⚠️ Endereço inválido. Cole uma URL completa começando com https://";
+return;
+
+}
+
+// Preserva os parâmetros existentes e acrescenta o rastreamento
+url.searchParams.set("rh",ID_AFILIADO);
+
+urlOriginalVaga=endereco;
+linkAtual=url.toString();
+
+aviso.style.display="block";
+aviso.innerHTML=
+"<strong>✅ LINK DE AFILIADO GERADO!</strong><br><br>"+
+linkAtual;
+
+document.getElementById("copiarLink").style.display="block";
+document.getElementById("usarVaga").style.display="block";
+
+}
+
+// COPIAR LINK
+
+async function copiarLinkAfiliado(){
+
+if(!linkAtual)return;
+
+try{
+
+await navigator.clipboard.writeText(linkAtual);
+alert("✅ Link de afiliado copiado!");
+
+}catch(e){
+
+const area=document.createElement("textarea");
+area.value=linkAtual;
+document.body.appendChild(area);
+area.select();
+document.execCommand("copy");
+document.body.removeChild(area);
+
+alert("✅ Link copiado!");
+
+}
+
+}
+
+// USAR VAGA NA DIVULGAÇÃO
+
+function usarVagaNaDivulgacao(){
+
+document.getElementById("cargo").value=
+cargoSelecionado || document.getElementById("cargoBusca").value.trim();
+
+document.getElementById("local").value=
+localSelecionado || document.getElementById("cidadeBusca").value.trim();
+
+document.getElementById("linkAfiliado").value=linkAtual;
+
+// Não inventa modalidade de contratação.
+document.getElementById("tipo").value="";
+
+document.getElementById("aviso").style.display="block";
+document.getElementById("aviso").textContent=
+"✅ Vaga e link preenchidos! Confira os dados e gere sua divulgação.";
+
+document.getElementById("cargo").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+}
+
+// GERAR DIVULGAÇÃO ORIGINAL
 
 function gerarDivulgacao(){
 
@@ -377,10 +613,11 @@ localStorage.setItem("geVagasAnuncios",totalAnuncios);
 document.getElementById("anuncios").textContent=totalAnuncios;
 
 aviso.style.display="block";
-
 aviso.textContent="✅ Divulgação criada com sucesso!";
 
 }
+
+// COPIAR TEXTO
 
 async function copiarTexto(){
 
@@ -409,6 +646,8 @@ alert("✅ Texto copiado!");
 }
 
 }
+
+// COMPARTILHAR
 
 async function compartilhar(){
 
@@ -441,3 +680,4 @@ alert("Texto copiado! Você pode colar no WhatsApp.");
 
 </body>
 </html>
+
