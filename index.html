@@ -7,6 +7,10 @@
 <meta name="theme-color" content="#155eef">
 <title>GE VAGAS</title>
 
+<!-- GOOGLE ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7305465002142524"
+crossorigin="anonymous"></script>
+
 <style>
 *{box-sizing:border-box}
 
@@ -41,7 +45,6 @@ box-shadow:0 5px 20px rgba(20,50,100,.10);
 }
 
 h2{margin-top:0;font-size:20px}
-
 .intro{line-height:1.5;color:#4a5568}
 
 .stats{
@@ -96,7 +99,6 @@ margin-top:10px;
 }
 
 button:active,.btn-link:active{transform:scale(.98)}
-
 .verde{background:#25d366}
 
 .resultado{
@@ -172,15 +174,12 @@ font-size:13px;
 <main>
 
 <section class="card">
-
 <h2>Boas oportunidades começam aqui. 💼</h2>
-
 <p class="intro">
 Encontre vagas, prepare anúncios e organize suas divulgações em um só lugar.
 </p>
 
 <div class="stats">
-
 <div class="stat">
 <strong>GRUPO RH</strong>
 <span>Fonte de vagas</span>
@@ -195,14 +194,12 @@ Encontre vagas, prepare anúncios e organize suas divulgações em um só lugar.
 <strong id="anuncios">0</strong>
 <span>Anúncios criados</span>
 </div>
-
 </div>
 </section>
 
 <!-- BUSCA ASSISTIDA -->
 
 <section class="card">
-
 <h2>🔎 BUSCA AUTOMÁTICA DE VAGAS</h2>
 
 <p class="intro">
@@ -210,25 +207,17 @@ Pesquise oportunidades pelo cargo e localização. O GE VAGAS abrirá a pesquisa
 </p>
 
 <div class="busca-box">
-
 <label for="cargoBusca">Cargo desejado</label>
-<input
-id="cargoBusca"
-placeholder="Ex: Auxiliar de Produção"
->
+<input id="cargoBusca" placeholder="Ex: Auxiliar de Produção">
 
 <label for="cidadeBusca">Cidade ou região</label>
-<input
-id="cidadeBusca"
-placeholder="Ex: São Paulo - SP"
->
+<input id="cidadeBusca" placeholder="Ex: São Paulo - SP">
 
 <button type="button" onclick="abrirBuscaAutomatica()">
 🔍 PESQUISAR VAGAS
 </button>
 
 <div id="avisoBusca" class="aviso"></div>
-
 </div>
 
 <div class="destaque">
@@ -236,17 +225,12 @@ placeholder="Ex: São Paulo - SP"
 <p>1. Digite o cargo desejado.</p>
 <p>2. Informe a cidade, se desejar.</p>
 <p>3. Abra os resultados oficiais do Grupo RH.</p>
-<p>4. Escolha uma vaga e copie o endereço completo dela.</p>
+<p>4. Escolha uma vaga e copie o endereço completo da vaga.</p>
 <p>5. Cole o endereço abaixo para gerar seu link de afiliado.</p>
 </div>
 
 <label for="urlVaga">🔗 Endereço da vaga escolhida</label>
-
-<input
-id="urlVaga"
-type="url"
-placeholder="Cole aqui a URL completa da vaga"
->
+<input id="urlVaga" type="url" placeholder="Cole aqui a URL completa da vaga">
 
 <button type="button" class="verde" onclick="gerarLinkAutomatico()">
 ⚡ GERAR MEU LINK DE AFILIADO
@@ -254,30 +238,18 @@ placeholder="Cole aqui a URL completa da vaga"
 
 <div id="linkGerado" class="link-gerado"></div>
 
-<button
-id="copiarLink"
-type="button"
-style="display:none"
-onclick="copiarLinkAfiliado()"
->
+<button id="copiarLink" type="button" style="display:none" onclick="copiarLinkAfiliado()">
 📋 COPIAR LINK DE AFILIADO
 </button>
 
-<button
-id="usarVaga"
-type="button"
-style="display:none"
-onclick="usarVagaNaDivulgacao()"
->
+<button id="usarVaga" type="button" style="display:none" onclick="usarVagaNaDivulgacao()">
 📢 USAR ESTA VAGA NA DIVULGAÇÃO
 </button>
-
 </section>
 
 <!-- BUSCA ORIGINAL -->
 
 <section class="card">
-
 <h2>🔎 BUSCAR VAGAS NO GRUPO RH</h2>
 
 <p class="intro">
@@ -285,47 +257,32 @@ Consulte as oportunidades publicadas diretamente no site oficial do Grupo RH.
 </p>
 
 <label for="busca">Cargo desejado (opcional)</label>
+<input type="text" id="busca" placeholder="Ex: Auxiliar, vendedor, produção...">
 
-<input
-type="text"
-id="busca"
-placeholder="Ex: Auxiliar, vendedor, produção..."
->
-
-<a
-id="botaoVagas"
-class="btn-link"
+<a id="botaoVagas" class="btn-link"
 href="https://gruporhconsultoria.com/vagas/"
-target="_blank"
-rel="noopener noreferrer"
->
+target="_blank" rel="noopener noreferrer">
 🏢 ABRIR LISTA DE VAGAS DO GRUPO RH
 </a>
 
 <div class="destaque">
 <strong>📌 Como encontrar seu link de afiliado:</strong>
-
 <p>1. Abra a lista oficial de vagas.</p>
 <p>2. Escolha a oportunidade desejada.</p>
 <p>3. Clique na vaga para abrir os detalhes.</p>
 <p>4. Gere seu link usando a nova ferramenta acima.</p>
 </div>
 
-<a
-class="btn-link verde"
+<a class="btn-link verde"
 href="https://gruporhconsultoria.com/affiliate-portal/"
-target="_blank"
-rel="noopener noreferrer"
->
+target="_blank" rel="noopener noreferrer">
 🔗 ACESSAR PORTAL DE AFILIADOS
 </a>
-
 </section>
 
 <!-- CRIAR DIVULGAÇÃO -->
 
 <section class="card">
-
 <h2>📢 CRIAR DIVULGAÇÃO</h2>
 
 <p class="intro">
@@ -342,23 +299,13 @@ Depois de selecionar sua oportunidade, preencha os dados para criar seu anúncio
 <input id="tipo" placeholder="Ex: CLT">
 
 <label for="linkAfiliado">🔗 Cole aqui seu link de afiliado</label>
+<input id="linkAfiliado" type="url" placeholder="Cole seu link de afiliado aqui">
 
-<input
-id="linkAfiliado"
-type="url"
-placeholder="Cole seu link de afiliado aqui"
->
-
-<button
-type="button"
-class="verde"
-onclick="gerarDivulgacao()"
->
+<button type="button" class="verde" onclick="gerarDivulgacao()">
 📢 GERAR DIVULGAÇÃO
 </button>
 
 <div id="aviso" class="aviso"></div>
-
 <div id="resultado" class="resultado"></div>
 
 <div id="acoes" style="display:none">
@@ -371,18 +318,11 @@ onclick="gerarDivulgacao()"
 📤 COMPARTILHAR
 </button>
 
-<a
-id="abrirLink"
-class="btn-link"
-href="#"
-target="_blank"
-rel="noopener noreferrer"
->
+<a id="abrirLink" class="btn-link" href="#" target="_blank" rel="noopener noreferrer">
 🔗 ABRIR E TESTAR LINK
 </a>
 
 </div>
-
 </section>
 
 </main>
@@ -407,8 +347,6 @@ localStorage.getItem("geVagasAnuncios") || 0
 
 document.getElementById("anuncios").textContent=totalAnuncios;
 
-// ABRIR BUSCA OFICIAL
-
 function abrirBuscaAutomatica(){
 
 const cargo=document.getElementById("cargoBusca").value.trim();
@@ -416,16 +354,12 @@ const cidade=document.getElementById("cidadeBusca").value.trim();
 const aviso=document.getElementById("avisoBusca");
 
 if(!cargo){
-
 aviso.style.display="block";
 aviso.textContent="⚠️ Digite o cargo que deseja pesquisar.";
 return;
-
 }
 
 const url=new URL("https://gruporhconsultoria.com/vagas/");
-
-// Parâmetros de pesquisa do portal
 url.searchParams.set("search_keywords",cargo);
 
 if(cidade){
@@ -442,27 +376,21 @@ aviso.textContent="✅ Pesquisa oficial aberta. Escolha uma oportunidade e copie
 
 }
 
-// GERAR LINK DE AFILIADO
-
 function gerarLinkAutomatico(){
 
 const campo=document.getElementById("urlVaga");
 const aviso=document.getElementById("linkGerado");
-
 const endereco=campo.value.trim();
 
 if(!endereco){
-
 aviso.style.display="block";
 aviso.textContent="⚠️ Cole o endereço completo da vaga.";
 return;
-
 }
 
 let url;
 
 try{
-
 url=new URL(endereco);
 
 if(!["http:","https:"].includes(url.protocol)){
@@ -470,14 +398,11 @@ throw new Error();
 }
 
 }catch(e){
-
 aviso.style.display="block";
 aviso.textContent="⚠️ Endereço inválido. Cole uma URL completa começando com https://";
 return;
-
 }
 
-// Preserva os parâmetros existentes e acrescenta o rastreamento
 url.searchParams.set("rh",ID_AFILIADO);
 
 urlOriginalVaga=endereco;
@@ -493,33 +418,24 @@ document.getElementById("usarVaga").style.display="block";
 
 }
 
-// COPIAR LINK
-
 async function copiarLinkAfiliado(){
 
 if(!linkAtual)return;
 
 try{
-
 await navigator.clipboard.writeText(linkAtual);
 alert("✅ Link de afiliado copiado!");
-
 }catch(e){
-
 const area=document.createElement("textarea");
 area.value=linkAtual;
 document.body.appendChild(area);
 area.select();
 document.execCommand("copy");
 document.body.removeChild(area);
-
 alert("✅ Link copiado!");
-
 }
 
 }
-
-// USAR VAGA NA DIVULGAÇÃO
 
 function usarVagaNaDivulgacao(){
 
@@ -531,7 +447,6 @@ localSelecionado || document.getElementById("cidadeBusca").value.trim();
 
 document.getElementById("linkAfiliado").value=linkAtual;
 
-// Não inventa modalidade de contratação.
 document.getElementById("tipo").value="";
 
 document.getElementById("aviso").style.display="block";
@@ -545,8 +460,6 @@ block:"center"
 
 }
 
-// GERAR DIVULGAÇÃO ORIGINAL
-
 function gerarDivulgacao(){
 
 const cargo=document.getElementById("cargo").value.trim();
@@ -557,16 +470,12 @@ const link=document.getElementById("linkAfiliado").value.trim();
 const aviso=document.getElementById("aviso");
 
 if(!cargo || !local || !link){
-
 aviso.style.display="block";
 aviso.textContent="⚠️ Preencha o cargo, a localização e o link de afiliado.";
-
 return;
-
 }
 
 try{
-
 const url=new URL(link);
 
 if(!["http:","https:"].includes(url.protocol)){
@@ -574,12 +483,9 @@ throw new Error();
 }
 
 }catch(e){
-
 aviso.style.display="block";
 aviso.textContent="⚠️ Insira um link de afiliado válido.";
-
 return;
-
 }
 
 linkAtual=link;
@@ -599,17 +505,13 @@ Boa sorte! 🍀
 #vagas #emprego #oportunidade #trabalho`;
 
 document.getElementById("resultado").textContent=textoAtual;
-
 document.getElementById("resultado").style.display="block";
-
 document.getElementById("acoes").style.display="block";
-
 document.getElementById("abrirLink").href=linkAtual;
 
 totalAnuncios++;
 
 localStorage.setItem("geVagasAnuncios",totalAnuncios);
-
 document.getElementById("anuncios").textContent=totalAnuncios;
 
 aviso.style.display="block";
@@ -617,61 +519,39 @@ aviso.textContent="✅ Divulgação criada com sucesso!";
 
 }
 
-// COPIAR TEXTO
-
 async function copiarTexto(){
 
 try{
-
 await navigator.clipboard.writeText(textoAtual);
-
 alert("✅ Texto copiado!");
-
 }catch(e){
-
 const area=document.createElement("textarea");
-
 area.value=textoAtual;
-
 document.body.appendChild(area);
-
 area.select();
-
 document.execCommand("copy");
-
 document.body.removeChild(area);
-
 alert("✅ Texto copiado!");
-
 }
 
 }
-
-// COMPARTILHAR
 
 async function compartilhar(){
 
 if(navigator.share){
 
 try{
-
 await navigator.share({
 title:"GE VAGAS",
 text:textoAtual
 });
-
 }catch(e){
-
 console.log("Compartilhamento cancelado.");
-
 }
 
 }else{
-
 copiarTexto();
-
 alert("Texto copiado! Você pode colar no WhatsApp.");
-
 }
 
 }
@@ -680,4 +560,5 @@ alert("Texto copiado! Você pode colar no WhatsApp.");
 
 </body>
 </html>
+
 
